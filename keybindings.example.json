@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "keybindings": {
+    "sidebar.checks.toggle": ["Mod+Shift+F"],
+    "sidebar.ports.toggle": ["Mod+Shift+G"],
+    "sidebar.search.toggle": [],
+    "sidebar.sourceControl.toggle": []
+  }
+}

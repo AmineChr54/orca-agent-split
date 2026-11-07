@@ -1,0 +1,73 @@
+{
+  "manifestVersion": 2,
+  "execution": "trusted-worker",
+  "id": "agent-split",
+  "name": "Agent Split",
+  "version": "1.0.0",
+  "description": "One shortcut to split the focused terminal to the right and start your coding agent (claude, codex, or any command) in the new pane. Two configurable slots, plus status bar buttons.",
+  "author": { "name": "Amine Cheikhrouhou" },
+  "license": "MIT",
+  "engines": { "orca": ">=1.4.248" },
+  "pluginApi": 1,
+  "main": "worker.mjs",
+  "capabilities": [
+    { "kind": "workspace:read" },
+    { "kind": "settings:own" }
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "id": "agentSplit.first",
+        "title": "Agent Split: open the first command in a right split",
+        "replaces": "sidebar.checks.toggle"
+      },
+      {
+        "id": "agentSplit.second",
+        "title": "Agent Split: open the second command in a right split",
+        "replaces": "sidebar.ports.toggle"
+      }
+    ],
+    "settings": [
+      {
+        "key": "firstCommand",
+        "title": "First command",
+        "description": "Runs in the new pane for the first shortcut (bound to Show Checks).",
+        "type": "string",
+        "default": "claude",
+        "placeholder": "claude"
+      },
+      {
+        "key": "secondCommand",
+        "title": "Second command",
+        "description": "Runs in the new pane for the second shortcut (bound to Show Ports).",
+        "type": "string",
+        "default": "codex",
+        "placeholder": "codex"
+      },
+      {
+        "key": "direction",
+        "title": "Where the new pane opens",
+        "type": "string",
+        "default": "right",
+        "enum": ["right", "down"],
+        "enumLabels": ["Right (side by side)", "Down (stacked)"]
+      }
+    ],
+    "statusBarItems": [
+      {
+        "id": "first",
+        "text": "claude",
+        "icon": "agent",
+        "tooltip": "Agent Split: open claude in a right split",
+        "command": "agentSplit.first"
+      },
+      {
+        "id": "second",
+        "text": "codex",
+        "icon": "agent",
+        "tooltip": "Agent Split: open codex in a right split",
+        "command": "agentSplit.second"
+      }
+    ]
+  }
+}
